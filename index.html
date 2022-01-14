@@ -12,6 +12,7 @@
 
         <p>indeed a very unique website.</p>
         <a href="./game.html">a cool game!!!</a>
+        <p id="compat" style="font-size: 8px;">also press spacebar for very cool thing</p>
     </div>
     <div class="joediv">
         <p id="pjoep"></p>
@@ -19,10 +20,17 @@
 </body>
 
 <script>
+    //cool
+    if (navigator.userAgent.match(/Mobile/)) {
+        document.getElementById('compat').innerHTML = 'also tap the screen for very cool thing';
+    }
     document.body.onkeydown = function (e) {
         if (e.keyCode == 32) {
             document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe ';
         }
+    }
+    document.ontouchend = function () {
+        document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe ';
     }
 </script>
 </html>
