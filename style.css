@@ -1,0 +1,40 @@
+@font-face {  
+    src: url('./fonts/insane.TTF'); 
+    font-family: joe;
+} 
+
+*body {
+    margin: 0;
+    padding: 0;
+}
+.joediv {
+    margin-left: 8px;
+    margin-bottom: 40px;
+    font-family: joe;
+
+}
+
+.joetitle {
+    font-family: joe !important;
+    font-size: larger;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.joetitle2 {
+    font-family: joe !important;
+    font-size: 42px;
+}
+
+button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: joe;
+    font-weight: bolder;
+    font-size: 1em
+}
