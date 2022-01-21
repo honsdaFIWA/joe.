@@ -12,7 +12,8 @@
 
         <p>the game!!</p>
         <a href="./index.html">go back i want to type more joes >:((((((</a>
-    </div class="joediv">
+    </div>
+    <p id="notif" style="font-family: joe;"></p>
     <p id="coins" style="font-family: joe;">Coins: 0</p>
     <table style="font-family: joe;">
         <tr>
@@ -24,26 +25,35 @@
         </tr>
         <tr>
             <th>money generator real</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <th><span><img src="data:image/jpeg;base64,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"></span></th>
-            <th></th>
-            <th></th>
+            <th>internet donations</th>
+            <th>the joe bank</th>
             <th></th>
             <th></th>
         </tr>
         <tr>
-            <th><button id="button1" onclick="poo1()">press me!</button></th>
+            <th><span><img class="roundy" width="200px" height="200px" src="https://www.kindpng.com/picc/m/210-2108152_cash-clipart-money-vector-graphics-illustrations-free-free.png"></span></th>
+            <th id="poo1m"><span><img style="opacity: 50%;" class="roundy" width="200px" height="200px" src="https://www.pngitem.com/pimgs/m/209-2094569_globe-vector-clipart-and-for-free-transparent-png.png"></span></th>
+            <th id="poo2m"><span><img style="opacity: 50%;" class="roundy" width="200px" height="200px" src="https://www.nicepng.com/png/full/133-1339346_bank-institution-university-comments-font-awesome-university-icon.png"></span></th>
             <th></th>
             <th></th>
+        </tr>
+        <tr>
+            <th id="button1"><button onclick="coinsval++">press me!</button></th>
+            <th id="button2"><button onclick="unlock1();">buy for 150 coins</button></th>
+            <th id="button3"><button onclick="unlock2();">buy for 5000 coins</button></th>
             <th></th>
             <th></th>
         </tr>
     </table>
+    <div class="joediv" style="margin-top: 2em;">
+        <table>
+            <tr>
+                <th>pop. placeholder</th>
+                <th>hap. placeholder</th>
+                <th>earnings placeholder</th>
+            </tr>
+        </table>
+    </div>
     <script src="./js/thegame.js"></script>
 </body>
 </html>

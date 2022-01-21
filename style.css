@@ -38,3 +38,11 @@ button {
     font-weight: bolder;
     font-size: 1em
 }
+
+.roundy {
+    border-radius: 50%;
+}
+
+tr, td, th {
+    padding: 10px 24px;
+}
