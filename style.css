@@ -36,7 +36,39 @@ button {
     outline: none;
     font-family: joe;
     font-weight: bolder;
-    font-size: 1em
+    font-size: 1em;
+    border: solid 1px black;
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: joe;
+    font-weight: bolder;
+    font-size: 1em;
+    border: solid 1px rgb(90, 90, 90);
+    border-radius: 3px;
+    background-color: rgb(236, 236, 236);
+}
+
+button:active {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-family: joe;
+    font-weight: bolder;
+    font-size: 1em;
+    border: solid 1px rgb(90, 90, 90);
+    border-radius: 3px;
+    background-color: rgb(148, 148, 148);
 }
 
 .roundy {
