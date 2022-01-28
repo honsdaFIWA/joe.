@@ -54,18 +54,23 @@ setInterval(() => {
 
 //update coin value
 
-//update every 100 ticks
 setInterval(() => {
     coinsval += (prer1 + prer2 - expense)
 }, 1000);
 
+
+//ui functions
+
+//update ui stats
+//update every 100 ticks
 setInterval(() => {
     document.getElementById("coins").innerHTML = "Coins: " + coinsval;
+    document.getElementById("popui").innerHTML = `<p>Pop: ${curpop}/${maxpop}</p>`
+    document.getElementById("earningsui").innerHTML = `<p>Earnings: ${(prer1 + prer2 - expense)}</p>`;
+    document.getElementById("happyui").innerHTML = `<p>Happiness: ${happyfix}%</p>`;
 }, 100);
 
 
-
-//ui functions
 function notif(snotif) {
     cdnotif = true
     document.getElementById("notif").innerHTML = `<p style="color:red; font-weight: bold; background-color: #f4f4f4;border:#e5e5e5 3px solid; border-radius: 6px; padding: 10px 50px 10px 8px; width:35%;">${snotif}</p>`
