@@ -1,13 +1,18 @@
 var coins = document.getElementById("coins")
 let coinsval = 0
 
+function dirpng(file) {
+    return `./assets/${file}.png`;
+}
+
 let cdnotif = false
 
 //system
 
 //population
 let houses = 0
-var maxpop = 8 * houses
+//math vars but funcs
+function maxpop() {var temp = houses * 8; return temp;  };
 let curpop = 0
 
 function fixpop() {
@@ -15,27 +20,30 @@ function fixpop() {
     else return 0; 
 }
 
-function prerfix() {
-    if(houses == 0) return 0;
-    else return Math.round(happiness / 100 * curpop * modhappy());
-}
-
 //earnings
 let happypoints = 1
-var happiness = Math.round(100 - curpop / happypoints)
-var happyfix = happiness + fixpop()
+function happiness() { var temp = Math.round(100 - curpop / happypoints); return temp; };
+function happyfix() { var temp = happiness() + fixpop(); return temp; };
 
 //func
 function modhappy() {
-    if (happiness >= 75) return 2;
-    else if (happiness >= 25) return 1;
-    else if (happiness >= 0) return 0;
-    else if (happiness <= 0) return 2;
+    if (happiness() >= 75) return 2;
+    else if (happiness() >= 25) return 1;
+    else if (happiness() >= 0) return 0;
+    else if (happiness() <= 0) return 2;
+}
+//
+function prerfix() {
+    var temp = Math.round(happiness() / 100 * curpop * modhappy());
+    if(houses == 0) return 0;
+    else return temp
 }
 
 let prer1 = 0
-var prer2 = prerfix()
 let expense = 0
+
+function earnings() {return prer1 + prerfix() - expense;}
+
 //game functions
 
 //items
@@ -44,30 +52,41 @@ item2 = false
 
 //update population
 setInterval(() => {
-    if (curpop <= maxpop) {
-        if (happiness >= 75) curpop += 2;
-        else if (happiness >= 25) curpop += 1;
-        else if (happiness >= 15) curpop += 0;
+    if (maxpop() > curpop) {
+        if (happiness() >= 75) curpop += 2;
+        else if (happiness() >= 25) curpop += 1;
     }
-    if (happiness <= 15) curpop -= 1;
+    if (happiness() <= 15  && curpop > 0) curpop -= 1;
 }, 1000);
 
 //update coin value
 
 setInterval(() => {
-    coinsval += (prer1 + prer2 - expense)
+    coinsval += earnings()
 }, 1000);
 
 
 //ui functions
 
+function cvalcoin() {
+    if (earnings() > 0) return `<span style="color: rgb(1, 194, 1);">+${earnings()}</span>`
+    else if (earnings() == 0) return `<span>+0</span>`
+    else if (earnings() < 0) return `<span style="color: red;">-${earnings()}</span>`
+}
+function happyicon() {
+    if (happiness() >= 75) return "happy";
+    else if (happiness() >= 55) return "smile";
+    else if (happiness() >= 35) return "neutral";
+    else if (happiness() >= 15) return "sad";
+    else if (happiness() < 15) return "angry";
+}
+
 //update ui stats
 //update every 100 ticks
 setInterval(() => {
-    document.getElementById("coins").innerHTML = "Coins: " + coinsval;
-    document.getElementById("popui").innerHTML = `<p>Pop: ${curpop}/${maxpop}</p>`
-    document.getElementById("earningsui").innerHTML = `<p>Earnings: ${(prer1 + prer2 - expense)}</p>`;
-    document.getElementById("happyui").innerHTML = `<p>Happiness: ${happyfix}%</p>`;
+    document.getElementById("coins").innerHTML = `<p>Coins: ${coinsval} <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/coin.png"></span> ${cvalcoin()}</p>`
+    document.getElementById("popui").innerHTML = `<p>Pop: <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/pop.png"> (${curpop}/${maxpop()})</p>`
+    document.getElementById("happyui").innerHTML = `<p>Happiness: <span><img style="vertical-align:middle" width="24px" height="24px" src="./assets/${happyicon()}.png"></span> ${happyfix()}%</p>`;
 }, 100);
 
 
