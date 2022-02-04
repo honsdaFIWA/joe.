@@ -78,3 +78,18 @@ button:active {
 tr, td, th {
     padding: 10px 24px;
 }
+
+h2 {
+    font-family: joe;
+    text-align: center;
+    width: 25%;
+    border: solid 10px rgb(0, 0, 0);
+    /*border-radius: 3px;*/
+    padding: 4px 40px;
+    border-image: url(./assets/border.png) 11;
+    border-image-repeat: round;
+}
+
+table {
+    font-family: joe;
+}

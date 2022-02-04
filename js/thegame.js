@@ -53,10 +53,9 @@ item2 = false
 //update population
 setInterval(() => {
     if (maxpop() > curpop) {
-        if (happiness() >= 75) curpop += 2;
-        else if (happiness() >= 25) curpop += 1;
+        if (happiness() >= 75) curpop += Math.floor(Math.random() * (6 - 2) + 2);
+        else if (happiness() < 75) curpop += Math.floor(Math.random() * (3 - 1) + 1);
     }
-    if (happiness() <= 15  && curpop > 0) curpop -= 1;
 }, 1000);
 
 //update coin value
@@ -106,6 +105,8 @@ function notif(snotif) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+// items t
+
 function unlock1() {
     if (coinsval >= 150) {
         coinsval -= 150; item1 = true;
@@ -131,4 +132,27 @@ function unlock2() {
     else {
         notif("Not enough coins!")
     }
+} 
+
+//house
+
+//prices
+let housep = 100
+let entp = [0, 1500, 5000]
+
+function entbuy(itemnum) {
+    coinsval -= entp[itemnum];
+    entp[itemnum] += (Math.round(entp[itemnum] / 5));
+    happypoints+=itemnum;
+    document.getElementById(`ent${itemnum}b`).innerHTML = `buy for ${entp[itemnum]} coins`;
+}
+
+function housebuy() {
+    if (coinsval >= housep) {
+        coinsval -= housep;
+        housep += (Math.round(housep / 10));
+        houses+=1;
+        document.getElementById("houseb").innerHTML = `buy for ${housep} coins`
+    }
+    else notif("Not enough coins!")
 }
