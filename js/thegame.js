@@ -33,6 +33,24 @@ function modhappy() {
     else if (happiness() <= 0) return 2;
 }
 //
+
+function abbrnum(value) {
+    var newValue = value;
+    if (value >= 1000) {
+        var suffixes = ["", "k", "mil", "bil","tril","Qd","Qn","Sx","Sp","Oc","No","D","UnD","DuoD","TrD","QuD","QnD","SxD","SpD","OcD","NoD","V","UnV"];
+        var suffixNum = Math.floor( (""+value).length/3 );
+        var shortValue = '';
+        for (var precision = 2; precision >= 1; precision--) {
+            shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+            var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+            if (dotLessShortValue.length <= 2) { break; }
+        }
+        if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+        newValue = shortValue+ " " +suffixes[suffixNum];
+    }
+    return newValue;
+}
+
 function prerfix() {
     var temp = Math.round(happiness() / 100 * curpop * modhappy());
     if(houses == 0) return 0;
@@ -83,7 +101,7 @@ function happyicon() {
 //update ui stats
 //update every 100 ticks
 setInterval(() => {
-    document.getElementById("coins").innerHTML = `<p>Coins: ${coinsval} <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/coin.png"></span> ${cvalcoin()}</p>`
+    document.getElementById("coins").innerHTML = `<p>Coins: ${abbrnum(coinsval)} <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/coin.png"></span> ${cvalcoin()}</p>`
     document.getElementById("popui").innerHTML = `<p>Pop: <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/pop.png"> (${curpop}/${maxpop()})</p>`
     document.getElementById("happyui").innerHTML = `<p>Happiness: <span><img style="vertical-align:middle" width="24px" height="24px" src="./assets/${happyicon()}.png"></span> ${happyfix()}%</p>`;
 }, 100);
@@ -110,7 +128,7 @@ function notif(snotif) {
 function unlock1() {
     if (coinsval >= 150) {
         coinsval -= 150; item1 = true;
-        document.getElementById("poo1m").innerHTML = `<span><img class="roundy" width="150px" height="150px" src="https://www.pngitem.com/pimgs/m/209-2094569_globe-vector-clipart-and-for-free-transparent-png.png"></span>`
+        document.getElementById("poo1m").innerHTML = `<span><img class="roundy" width="150px" height="150px" src="./assets/globe.png"></span>`
         document.getElementById("button2").innerHTML = `5 coins / sec`
         prer1 += 5
     }
@@ -122,7 +140,7 @@ function unlock1() {
 function unlock2() {
     if (coinsval >= 5000 && item1 == true) {
         coinsval -= 5000; item2 = true;
-        document.getElementById("poo2m").innerHTML = `<span><img class="roundy" width="150px" height="150px" src="https://www.nicepng.com/png/full/133-1339346_bank-institution-university-comments-font-awesome-university-icon.png"></span>`
+        document.getElementById("poo2m").innerHTML = `<span><img class="roundy" width="150px" height="150px" src="./assets/bank.png"></span>`
         document.getElementById("button3").innerHTML = `100 coins / sec`
         prer1 += 100
     }

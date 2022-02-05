@@ -72,7 +72,9 @@ button:active {
 }
 
 .roundy {
-    border-radius: 50%;
+    border: solid 10px rgb(0, 0, 0);
+    border-image: url(./assets/border.png) 20;
+    border-image-repeat: round;
 }
 
 tr, td, th {
@@ -81,12 +83,11 @@ tr, td, th {
 
 h2 {
     font-family: joe;
-    text-align: center;
-    width: 25%;
+    display: table;
     border: solid 10px rgb(0, 0, 0);
     /*border-radius: 3px;*/
     padding: 4px 40px;
-    border-image: url(./assets/border.png) 11;
+    border-image: url(./assets/border.png) 20;
     border-image-repeat: round;
 }
 
