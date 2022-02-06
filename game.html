@@ -20,6 +20,7 @@
                 <th id="coins"></th>
                 <th id="popui"></th>
                 <th id="happyui"></th>
+                <th id="clockui"></th>
             </tr>
         </table>
     </div>
@@ -49,9 +50,9 @@
             <th></th>
         </tr>
         <tr>
-            <th id="button1"><button onclick="coinsval++">press me!</button></th>
-            <th id="button2"><button onclick="unlock1();">buy for 150 coins</button></th>
-            <th id="button3"><button onclick="unlock2();">buy for 5000 coins</button></th>
+            <th id="button1"><button onclick="coinsval++" class="buttongame">press me!</button></th>
+            <th id="button2"><button onclick="unlock1();" class="buttongame">buy for 150 coins</button></th>
+            <th id="button3"><button onclick="unlock2();" class="buttongame">buy for 5000 coins</button></th>
             <th></th>
             <th></th>
         </tr>
@@ -67,22 +68,22 @@
     <table>
         <tr>
             <th>radio station / +1 happiness</th>
-            <th></th>
-            <th></th>
+            <th>tv station / +2 happiness</th>
+            <th>restaurant / +3 happiness</th>
             <th></th>
             <th></th>
         </tr>
         <tr>
             <th><span><img class="roundy" width="150px" height="150px" src="./assets/radio.png"></span></button></th>
-            <th></th>
-            <th></th>
+            <th><span><img class="roundy" width="150px" height="150px" src="./assets/tv.png"></span></button></th>
+            <th><span><img class="roundy" width="150px" height="150px" src="./assets/restaurant.png"></span></button></th>
             <th></th>
             <th></th>
         </tr>
         <tr>
-            <th><button id="ent1b" onclick="entbuy(1)">buy for 1500 coins</button></th>
-            <th></th>
-            <th></th>
+            <th><button class="buttongame" id="ent1b" onclick="entbuy(1)">buy for 1500 coins</button></th>
+            <th><button class="buttongame" id="ent2b" onclick="entbuy(2)">buy for 7500 coins</button></th>
+            <th><button class="buttongame" id="ent3b" onclick="entbuy(3)">buy for 20000 coins</button></th>
             <th></th>
             <th></th>
         </tr>
@@ -104,13 +105,14 @@
             <th></th>
         </tr>
         <tr>
-            <th><button id="houseb" onclick="housebuy()">buy for 100 coins</button></th>
+            <th><button class="buttongame" id="houseb" onclick="housebuy()">buy for 100 coins</button></th>
             <th></th>
             <th></th>
             <th></th>
             <th></th>
         </tr>
     </table>
+    <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/thegame.js"></script>
 </body>
 </html>

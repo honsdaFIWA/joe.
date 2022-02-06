@@ -17,6 +17,7 @@
 .joetitle {
     font-family: joe !important;
     font-size: larger;
+    font-weight: bolder;
     border: none;
     background: none;
     cursor: pointer;
@@ -27,7 +28,7 @@
     font-size: 42px;
 }
 
-button {
+.buttongame {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -41,7 +42,7 @@ button {
     border-radius: 3px;
 }
 
-button:hover {
+.buttongame:hover {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -56,7 +57,7 @@ button:hover {
     background-color: rgb(236, 236, 236);
 }
 
-button:active {
+.buttongame:active {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -93,4 +94,11 @@ h2 {
 
 table {
     font-family: joe;
+}
+
+#clockui {
+    border: solid 4px rgb(0, 0, 0);
+    border-image: url(./assets/border.png) 20;
+    border-image-repeat: round;
+    padding: 2px 8px;
 }

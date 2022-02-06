@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="joediv">
-        <h1><button class="joetitle" onclick="document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe '">joe.</button></h1>
+        <h1><button class="joetitle" onclick="document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe mama '; yourmom();">joe.</button></h1>
 
         <p>indeed a very unique website.</p>
         <a href="./game.html">a cool game!!!</a>
@@ -32,5 +32,12 @@
     document.ontouchend = function () {
         document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe ';
     }
+
+    function yourmom() {
+        $(".joetitle").fadeOut(250, function() {
+            $(this).text("joe mama.").fadeIn(750);
+        });
+    }
 </script>
+<script src="./js/jquery-3.6.0.min.js"></script>
 </html>

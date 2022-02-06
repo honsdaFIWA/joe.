@@ -32,24 +32,47 @@ function modhappy() {
     else if (happiness() >= 0) return 0;
     else if (happiness() <= 0) return 2;
 }
-//
+
+///////////////////////////////////////////
+
+function scifixn(x) {
+    if (Math.abs(x) < 1.0) {
+      var e = parseInt(x.toString().split('e-')[1]);
+      if (e) {
+          x *= Math.pow(10,e-1);
+          x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
+      }
+    } else {
+      var e = parseInt(x.toString().split('+')[1]);
+      if (e > 20) {
+          e -= 20;
+          x /= Math.pow(10,e);
+          x += (new Array(e+1)).join('0');
+      }
+    }
+    return x;
+}
 
 function abbrnum(value) {
-    var newValue = value;
-    if (value >= 1000) {
-        var suffixes = ["", "k", "mil", "bil","tril","Qd","Qn","Sx","Sp","Oc","No","D","UnD","DuoD","TrD","QuD","QnD","SxD","SpD","OcD","NoD","V","UnV"];
-        var suffixNum = Math.floor( (""+value).length/3 );
+    var newValue = scifixn(value);
+    if (scifixn(value) >= 1000) {
+        var suffixes = ["", "k", " mil", " bil"," tril","Qd","Qn","Sx","Sp","Oc","No","D","UnD","DuoD","TrD","QuD","QnD","SxD","SpD","OcD","NoD","V","UnV","DuoV","TrV","QuV","QnV","SxV","SpV","OcV","NoV","TrG","UnTG","DuoTG","TrTG","QdTG","QnTG","SxTG","SpTG","OcTG","NonTG","C","UnC","dC","vC","UtC+"];
+        var suffixNum = Math.floor( (""+scifixn(value)).length/3 );
         var shortValue = '';
         for (var precision = 2; precision >= 1; precision--) {
-            shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+            shortValue = parseFloat( (suffixNum != 0 ? (scifixn(value) / Math.pow(1000,suffixNum) ) : scifixn(value)).toPrecision(precision));
             var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
             if (dotLessShortValue.length <= 2) { break; }
         }
         if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
-        newValue = shortValue+ " " +suffixes[suffixNum];
+
+        if (suffixNum <= 46) newValue = shortValue+suffixes[suffixNum];
+        else newValue = shortValue+suffixes[45]+(suffixNum - 45);
     }
     return newValue;
 }
+
+/////////////////////////////////////////////
 
 function prerfix() {
     var temp = Math.round(happiness() / 100 * curpop * modhappy());
@@ -88,7 +111,7 @@ setInterval(() => {
 function cvalcoin() {
     if (earnings() > 0) return `<span style="color: rgb(1, 194, 1);">+${earnings()}</span>`
     else if (earnings() == 0) return `<span>+0</span>`
-    else if (earnings() < 0) return `<span style="color: red;">-${earnings()}</span>`
+    else if (earnings() < 0) return `<span style="color: red;">${earnings()}</span>`
 }
 function happyicon() {
     if (happiness() >= 75) return "happy";
@@ -98,12 +121,20 @@ function happyicon() {
     else if (happiness() < 15) return "angry";
 }
 
+//terrible clock + oneliner gaming
+
+let clock = 0;let fdig = "0";setInterval(function() {if(clock >= 9) fdig = "";else fdig = "0";if(clock < 24) clock++;else clock = 0;}, 5000);
+function clockui() {return `${fdig}${clock}:00`}
+
+//
+
 //update ui stats
 //update every 100 ticks
 setInterval(() => {
     document.getElementById("coins").innerHTML = `<p>Coins: ${abbrnum(coinsval)} <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/coin.png"></span> ${cvalcoin()}</p>`
     document.getElementById("popui").innerHTML = `<p>Pop: <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/pop.png"> (${curpop}/${maxpop()})</p>`
     document.getElementById("happyui").innerHTML = `<p>Happiness: <span><img style="vertical-align:middle" width="24px" height="24px" src="./assets/${happyicon()}.png"></span> ${happyfix()}%</p>`;
+    $("#clockui").text(clockui());
 }, 100);
 
 
@@ -156,13 +187,15 @@ function unlock2() {
 
 //prices
 let housep = 100
-let entp = [0, 1500, 5000]
+let entp = [0, 1500, 7500, 20000, 45000]
+let entex = [0, 24, 48, 72, 128]
 
 function entbuy(itemnum) {
+    expense+=entex[itemnum]; //add expenses
     coinsval -= entp[itemnum];
     entp[itemnum] += (Math.round(entp[itemnum] / 5));
     happypoints+=itemnum;
-    document.getElementById(`ent${itemnum}b`).innerHTML = `buy for ${entp[itemnum]} coins`;
+    document.getElementById(`ent${itemnum}b`).innerHTML = `buy for ${abbrnum(entp[itemnum])} coins`;
 }
 
 function housebuy() {
