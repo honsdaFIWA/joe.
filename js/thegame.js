@@ -122,9 +122,9 @@ function happyicon() {
 }
 
 //terrible clock + oneliner gaming
-
-let clock = 0;let fdig = "0";setInterval(function() {if(clock >= 9) fdig = "";else fdig = "0";if(clock < 24) clock++;else clock = 0;}, 5000);
-function clockui() {return `${fdig}${clock}:00`}
+function imgclock() {if(clock>5&&clock<18)return `<span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/sun.png">`;else return `<span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/night.png">`;}
+let clock = 6;let fdig = "0";setInterval(function() {if(clock >= 9) fdig = "";else fdig = "0";if(clock < 24) clock++;else clock = 0;}, 5000);
+function clockui() {return `${imgclock()}   ${fdig}${clock}:00`}
 
 //
 
@@ -134,7 +134,9 @@ setInterval(() => {
     document.getElementById("coins").innerHTML = `<p>Coins: ${abbrnum(coinsval)} <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/coin.png"></span> ${cvalcoin()}</p>`
     document.getElementById("popui").innerHTML = `<p>Pop: <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/pop.png"> (${curpop}/${maxpop()})</p>`
     document.getElementById("happyui").innerHTML = `<p>Happiness: <span><img style="vertical-align:middle" width="24px" height="24px" src="./assets/${happyicon()}.png"></span> ${happyfix()}%</p>`;
-    $("#clockui").text(clockui());
+    $("#clockui").html(clockui());
+    if (clock>5&&clock<18){ $("*").css({"background-color": "white", "color": "none"});}
+    else $("*").css({"background-color": "black", "color": "white"});
 }, 100);
 
 

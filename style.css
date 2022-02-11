@@ -3,15 +3,13 @@
     font-family: joe;
 } 
 
-*body {
-    margin: 0;
-    padding: 0;
+* {
+    background-color: white;
 }
 .joediv {
     margin-left: 8px;
     margin-bottom: 40px;
     font-family: joe;
-
 }
 
 .joetitle {
@@ -74,7 +72,7 @@
 
 .roundy {
     border: solid 10px rgb(0, 0, 0);
-    border-image: url(./assets/border.png) 20;
+    border-image: url(./assets/border.svg) 24;
     border-image-repeat: round;
 }
 
@@ -88,7 +86,7 @@ h2 {
     border: solid 10px rgb(0, 0, 0);
     /*border-radius: 3px;*/
     padding: 4px 40px;
-    border-image: url(./assets/border.png) 20;
+    border-image: url(./assets/border.svg) 24;
     border-image-repeat: round;
 }
 
@@ -97,8 +95,9 @@ table {
 }
 
 #clockui {
-    border: solid 4px rgb(0, 0, 0);
-    border-image: url(./assets/border.png) 20;
+    border: solid 6px rgb(0, 0, 0);
+    border-image: url(./assets/border.svg) 24;
     border-image-repeat: round;
     padding: 2px 8px;
+    align-content: center;
 }
