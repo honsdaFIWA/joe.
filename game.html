@@ -14,7 +14,10 @@
         <a href="./index.html">go back i want to type more joes >:((((((</a>
     </div>
     <p id="notif" style="font-family: joe;"></p>
-    <div class="joediv" style="margin-top: 2em;">
+    <div>
+        <canvas class="dispcan" width="720" height="360" style="border: 1px solid black;"></canvas>
+    </div>
+    <div class="joediv">
         <table>
             <tr>
                 <th id="coins"></th>
@@ -81,10 +84,10 @@
             <th></th>
         </tr>
         <tr>
-            <th><button class="buttongame" id="ent1b" onclick="entbuy(1)">buy for 1500 coins</button></th>
-            <th><button class="buttongame" id="ent2b" onclick="entbuy(2)">buy for 7500 coins</button></th>
-            <th><button class="buttongame" id="ent3b" onclick="entbuy(3)">buy for 20000 coins</button></th>
-            <th><button class="buttongame" id="ent4b" onclick="entbuy(4)">buy for 45000 coins</button></th>
+            <th><button class="buttongame" id="ent1b" onclick="entbuy(1)">buy for 1.5k coins</button></th>
+            <th><button class="buttongame" id="ent2b" onclick="entbuy(2)">buy for 7.5k coins</button></th>
+            <th><button class="buttongame" id="ent3b" onclick="entbuy(3)">buy for 20k coins</button></th>
+            <th><button class="buttongame" id="ent4b" onclick="entbuy(4)">buy for 45k coins</button></th>
             <th></th>
         </tr>
     </table>
@@ -92,21 +95,21 @@
     <table>
         <tr>
             <th>+1 house / 8 pop</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <th><span><img class="roundy" width="150px" height="150px" src="./assets/house2.png"></span></button></th>
-            <th></th>
+            <th>+2 house / 16 pop</th>
             <th></th>
             <th></th>
             <th></th>
         </tr>
         <tr>
-            <th><button class="buttongame" id="houseb" onclick="housebuy()">buy for 100 coins</button></th>
+            <th><span><img class="roundy" width="150px" height="150px" src="./assets/house2.png"></span></th>
+            <th><span><img class="roundy" width="150px" height="150px" src="./assets/house2.png"></span></th>
             <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th><button class="buttongame" id="houseb" onclick="housebuy(1)">buy for 100 coins</button></th>
+            <th><button class="buttongame" id="houseb" onclick="housebuy(2)">buy for 240 coins</button></th>
             <th></th>
             <th></th>
             <th></th>

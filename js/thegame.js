@@ -135,8 +135,6 @@ setInterval(() => {
     document.getElementById("popui").innerHTML = `<p>Pop: <span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/pop.png"> (${curpop}/${maxpop()})</p>`
     document.getElementById("happyui").innerHTML = `<p>Happiness: <span><img style="vertical-align:middle" width="24px" height="24px" src="./assets/${happyicon()}.png"></span> ${happyfix()}%</p>`;
     $("#clockui").html(clockui());
-    if (clock>5&&clock<18){ $("*").css({"background-color": "white", "color": "none"});}
-    else $("*").css({"background-color": "black", "color": "white"});
 }, 100);
 
 
@@ -188,24 +186,27 @@ function unlock2() {
 //house
 
 //prices
-let housep = 100
+let housep = [0, 100, 240]
 let entp = [0, 1500, 7500, 20000, 45000]
 let entex = [0, 24, 48, 72, 128]
 
 function entbuy(itemnum) {
-    expense+=entex[itemnum]; //add expenses
-    coinsval -= entp[itemnum];
-    entp[itemnum] += (Math.round(entp[itemnum] / 5));
-    happypoints+=itemnum;
-    document.getElementById(`ent${itemnum}b`).innerHTML = `buy for ${abbrnum(entp[itemnum])} coins`;
+    if (coinsval >= entp[itemnum]) {
+        expense+=entex[itemnum]; //add expenses
+        coinsval -= entp[itemnum];
+        entp[itemnum] += (Math.round(entp[itemnum] / 5));
+        happypoints+=itemnum;
+        document.getElementById(`ent${itemnum}b`).innerHTML = `buy for ${abbrnum(entp[itemnum])} coins`;
+    }
+    else notif("Not enough coins!");
 }
 
-function housebuy() {
-    if (coinsval >= housep) {
-        coinsval -= housep;
-        housep += (Math.round(housep / 10));
-        houses+=1;
-        document.getElementById("houseb").innerHTML = `buy for ${housep} coins`
+function housebuy(num) {
+    if (coinsval >= housep[num]) {
+        coinsval -= housep[num];
+        housep[num] += (Math.round(housep[num] / 10));
+        houses+=num;
+        document.getElementById("houseb").innerHTML = `buy for ${abbrnum(housep[num])} coins`
     }
-    else notif("Not enough coins!")
+    else notif("Not enough coins!");
 }

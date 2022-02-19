@@ -3,12 +3,9 @@
     font-family: joe;
 } 
 
-* {
-    background-color: white;
-}
 .joediv {
     margin-left: 8px;
-    margin-bottom: 40px;
+    margin-top: 12px;
     font-family: joe;
 }
 
