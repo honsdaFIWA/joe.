@@ -121,10 +121,22 @@ function happyicon() {
     else if (happiness() < 15) return "angry";
 }
 
+//canvas
+function loadimage(url){
+    var image = new Image();
+    image.onload = function(){ctx.drawImage(image,0,0);}
+    image.src = url;
+}
+
+var canv = document.getElementById("dispcan");
+var ctx = canv.getContext("2d")
+
 //terrible clock + oneliner gaming
 function imgclock() {if(clock>5&&clock<18)return `<span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/sun.png">`;else return `<span><img style="vertical-align:middle" width="22px" height="22px" src="./assets/night.png">`;}
 let clock = 6;let fdig = "0";setInterval(function() {if(clock >= 9) fdig = "";else fdig = "0";if(clock < 24) clock++;else clock = 0;}, 5000);
 function clockui() {return `${imgclock()}   ${fdig}${clock}:00`}
+if (clock >= 5) {ctx.fillStyle = "#ffffff";ctx.fillRect(0, 0, 360, 720);loadimage("./assets/canv.png");} 
+if (clock >= 17) {ctx.fillStyle = "#000000";ctx.fillRect(0, 0, 360, 720);loadimage("./assets/canv.png");} 
 
 //
 
