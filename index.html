@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="joediv">
-        <h1><button class="joetitle" onclick="document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe mama '; yourmom();">joe.</button></h1>
+        <h1><button class="joetitle" onclick="yourmom();">joe.</button></h1>
 
         <p>indeed a very unique website.</p>
         <a href="./game.html">a cool game!!!</a>
@@ -20,6 +20,7 @@
 </body>
 
 <script>
+    var joem = false;
     //cool
     if (navigator.userAgent.match(/Mobile/)) {
         document.getElementById('compat').innerHTML = 'also tap the screen for very cool thing';
@@ -34,8 +35,10 @@
     }
 
     function yourmom() {
-        $(".joetitle").fadeOut(250, function() {
+        document.getElementById('pjoep').innerHTML = document.getElementById('pjoep').textContent + 'joe mama ';
+        if (!joem) $(".joetitle").fadeOut(250, function() {
             $(this).text("joe mama.").fadeIn(750);
+            joem = true;
         });
     }
 </script>
