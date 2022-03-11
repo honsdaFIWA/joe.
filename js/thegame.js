@@ -218,7 +218,7 @@ function housebuy(num) {
         coinsval -= housep[num];
         housep[num] += (Math.round(housep[num] / 10));
         houses+=num;
-        document.getElementById("houseb").innerHTML = `buy for ${abbrnum(housep[num])} coins`
+        document.getElementById(`house${num}b`).innerHTML = `buy for ${abbrnum(housep[num])} coins`
     }
     else notif("Not enough coins!");
 }
